@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GOTITIP - Jasa Titip Mahasiswa UNSOED</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts Inter & FontAwesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                        },
+                        unsoed: {
+                            amber: '#f59e0b',
+                            yellow: '#fbbf24',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .custom-shadow {
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="text-slate-800 bg-slate-50 min-h-screen flex flex-col justify-between">
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 py-3.5 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-emerald-600 to-amber-500 flex items-center justify-center text-white font-black text-xl shadow-md">
+                    G
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-xl tracking-tight text-slate-900 leading-none">GOTITIP<span class="text-emerald-600">.PWT</span></h1>
+                    <p class="text-[11px] font-medium text-slate-500 tracking-wide mt-0.5">Jastip Mahasiswa UNSOED</p>
+                </div>
+            </div>
+
+            <a href="https://instagram.com/gotitip.pwt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center space-x-1.5 px-3 py-1.5 rounded-full bg-slate-100 hover:bg-emerald-50 text-slate-700 hover:text-emerald-600 text-xs font-semibold transition-all duration-200 border border-slate-200">
+                <i class="fa-brands font-semibold fa-instagram text-pink-600"></i>
+                <span>@gotitip.pwt</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="max-w-5xl mx-auto px-4 sm:px-6 py-6 space-y-8 flex-grow">
+        
+        <!-- Hero / Announcement Banner -->
+        <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-slate-900 via-emerald-950 to-slate-900 text-white p-6 sm:p-8 shadow-xl">
+            <div class="absolute -right-10 -bottom-10 w-48 h-48 bg-emerald-500/20 rounded-full blur-3xl"></div>
+            <div class="absolute -left-10 -top-10 w-48 h-48 bg-amber-500/20 rounded-full blur-3xl"></div>
+
+            <div class="relative z-10 max-w-2xl">
+                <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-400/30 text-emerald-300 text-xs font-medium mb-3">
+                    <span class="flex h-2 w-2 rounded-full bg-emerald-400 animate-ping"></span>
+                    <span>Layanan Wilayah UNSOED & Sumampir</span>
+                </div>
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white mb-2 leading-tight">
+                    Titip Makanan, Obat & Kebutuhan Kost Cepat & Tanpa Repot!
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base mb-5 leading-relaxed">
+                    Siap membantu mahasiswa UNSOED memenuhi kebutuhan harian. Cukup isi form pesanan, sistem akan menghitung estimasi biaya dan langsung terhubung ke WhatsApp kami!
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <a href="#form-pemesanan" class="inline-flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white text-sm font-bold shadow-lg shadow-emerald-500/30 transition-all hover:scale-[1.02] active:scale-95">
+                        <i class="fa-solid fa-cart-shopping"></i>
+                        <span>Pesan Sekarang</span>
+                    </a>
+                    <a href="#jam-operasional" class="inline-flex items-center space-x-2 px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white text-sm font-semibold backdrop-blur-sm transition-all">
+                        <i class="fa-regular fa-clock"></i>
+                        <span>Cek Jam Buka</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Order Form & Real-time Calculator Grid -->
+        <section id="form-pemesanan" class="scroll-mt-20">
+            <div class="bg-white rounded-2xl border border-slate-200/80 shadow-lg overflow-hidden">
+                <div class="border-b border-slate-100 bg-slate-50/50 px-6 py-4 flex items-center justify-between">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+                            <i class="fa-solid fa-paper-plane"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-bold text-slate-800 text-lg">Formulir Pemesanan GOTITIP</h3>
+                            <p class="text-xs text-slate-500">Isi data pesanan Anda dengan lengkap</p>
+                        </div>
+                    </div>
+                    <span class="hidden sm:inline-flex px-2.5 py-1 rounded-md bg-amber-50 text-amber-700 border border-amber-200 text-xs font-semibold">
+                        Min. Order Rp 10.000
+                    </span>
+                </div>
+
+                <form id="orderForm" onsubmit="event.preventDefault(); sendToWhatsApp();" class="p-6 space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        
+                        <!-- Customer Info -->
+                        <div class="space-y-4">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-user text-emerald-600"></i> Informasi Pemesan
+                            </h4>
+                            
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Pemesan <span class="text-red-500">*</span></label>
+                                <input type="text" id="customerName" required placeholder="Contoh: Budi Santoso" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Nomor WhatsApp / HP <span class="text-red-500">*</span></label>
+                                <input type="tel" id="customerPhone" required placeholder="Contoh: 081234567890" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Kategori Layanan Jastip <span class="text-red-500">*</span></label>
+                                <select id="serviceType" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none bg-white">
+                                    <option value="Makanan">🍱 Makanan / Minuman</option>
+                                    <option value="Obat-obatan">💊 Obat-obatan / Apotek</option>
+                                    <option value="Kebutuhan Kost">🛒 Belanja Kebutuhan Kost</option>
+                                    <option value="Lainnya">📦 Lain-lain</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Alamat Pengantaran (Khusus UNSOED / Sumampir) <span class="text-red-500">*</span></label>
+                                <textarea id="deliveryAddress" required rows="2" placeholder="Contoh: Kost Permata Ungu Room 5, Jl. Kampus Gg. Mawar, Sumampir" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none resize-none"></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Order Item Details -->
+                        <div class="space-y-4">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1.5">
+                                <i class="fa-solid fa-basket-shopping text-emerald-600"></i> Detail Resto & Pesanan
+                            </h4>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Nama Resto / Toko / Lokasi Pembelian <span class="text-red-500">*</span></label>
+                                <input type="text" id="merchantName" required placeholder="Contoh: Ayam Geprek Bu Mayar Kampus" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none">
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Daftar Item Pesanan & Catatan Rinci <span class="text-red-500">*</span></label>
+                                <textarea id="orderItems" required rows="3" placeholder="Contoh:&#10;- 1x Geprek Paha Atas Pedas Level 3&#10;- 1x Es Teh Manis Less Ice" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none resize-none"></textarea>
+                            </div>
+
+                            <div>
+                                <label class="block text-xs font-semibold text-slate-700 mb-1">Perkiraan/Estimasi Harga Barang (Rp) <span class="text-red-500">*</span></label>
+                                <div class="relative">
+                                    <span class="absolute left-3.5 top-2.5 text-xs font-bold text-slate-400">Rp</span>
+                                    <input type="number" id="itemEstPrice" required min="10000" placeholder="Minimal 10000" oninput="calculateTotal()" class="w-full pl-10 pr-3.5 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 text-sm transition-all outline-none">
+                                </div>
+                                <p class="text-[11px] text-slate-400 mt-1">*Minimal total belanja barang Rp 10.000</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Distance & Fee Options Section -->
+                    <div class="pt-4 border-t border-slate-100 grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <!-- Jarak Pengantaran -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Jarak Resto ke Lokasi (Km) <span class="text-red-500">*</span></label>
+                            <select id="distanceTier" onchange="calculateTotal()" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-sm outline-none bg-white">
+                                <option value="3000">0 - 2 Km (Rp 3.000)</option>
+                                <option value="5000">> 2 - 4 Km (Rp 5.000)</option>
+                                <option value="7000">> 4 - 6 Km (Rp 7.000)</option>
+                                <option value="9000">> 6 - 8 Km (Rp 9.000)</option>
+                                <option value="custom">> 8 Km (Biaya Penyesuaian)</option>
+                            </select>
+                        </div>
+
+                        <!-- Parkir Resto -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Parkir Restoran / Toko</label>
+                            <select id="parkingFee" onchange="calculateTotal()" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-sm outline-none bg-white">
+                                <option value="0">Tidak ada parkir (Rp 0)</option>
+                                <option value="2000">Ada Parkir (+ Rp 2.000)</option>
+                            </select>
+                        </div>
+
+                        <!-- Metode Pembayaran -->
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1">Metode Pembayaran <span class="text-red-500">*</span></label>
+                            <select id="paymentMethod" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-emerald-500 text-sm outline-none bg-white">
+                                <option value="QRIS">📲 QRIS (Transfer)</option>
+                                <option value="Cash (Uang Pas)">💵 Cash (Uang Pas saat diantar)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Custom notice for >8km -->
+                    <div id="customDistanceNotice" class="hidden p-3 bg-amber-50 border border-amber-200 rounded-xl text-xs text-amber-800">
+                        <i class="fa-solid fa-circle-info text-amber-600 mr-1"></i>
+                        Untuk jarak di atas 8 Km, biaya ongkir akan dihitung secara khusus oleh admin GOTITIP berdasarkan jumlah/harga barang saat konfirmasi WhatsApp.
+                    </div>
+
+                    <!-- Total Billing Summary Box -->
+                    <div class="bg-slate-900 rounded-2xl p-5 text-white space-y-3">
+                        <div class="flex justify-between items-center text-xs text-slate-400 pb-2 border-b border-slate-800">
+                            <span>Rincian Estimasi Biaya</span>
+                            <span class="text-[11px] text-amber-400 font-medium">*Harga akhir disesuaikan dengan struk restoran</span>
+                        </div>
+                        
+                        <div class="space-y-1.5 text-xs text-slate-300">
+                            <div class="flex justify-between">
+                                <span>Estimasi Barang:</span>
+                                <span id="summaryItemPrice" class="font-medium text-white">Rp 0</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Ongkos Kirim (Jastip):</span>
+                                <span id="summaryOngkir" class="font-medium text-white">Rp 3.000</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>Biaya Parkir Resto:</span>
+                                <span id="summaryParkir" class="font-medium text-white">Rp 0</span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 border-t border-slate-800 flex justify-between items-center">
+                            <div>
+                                <span class="text-xs text-slate-400 block">Total Estimasi Pembayaran:</span>
+                                <span id="summaryTotal" class="text-2xl font-extrabold text-emerald-400">Rp 3.000</span>
+                            </div>
+
+                            <button type="submit" class="inline-flex items-center space-x-2 px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all hover:scale-[1.02] active:scale-95 cursor-pointer">
+                                <i class="fa-brands fa-whatsapp text-lg"></i>
+                                <span>Kirim via WhatsApp</span>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Operational Hours, Ongkir Table & Rules Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Operational Schedule Card -->
+            <div id="jam-operasional" class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm scroll-mt-20">
+                <div class="flex items-center space-x-2 mb-4 text-emerald-600">
+                    <i class="fa-regular fa-clock text-lg"></i>
+                    <h3 class="font-bold text-slate-900 text-base">Jam Operasional</h3>
+                </div>
+
+                <!-- Live Status Banner -->
+                <div id="liveStatusBox" class="mb-4 p-2.5 rounded-xl text-xs font-semibold flex items-center justify-between">
+                    <!-- Javascript will fill this -->
+                </div>
+
+                <div class="space-y-2 text-xs">
+                    <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                        <span class="font-medium text-slate-600">Senin</span>
+                        <span class="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">10.00 - 21.00 WIB</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                        <span class="font-medium text-slate-600">Selasa</span>
+                        <span class="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">18.00 - 22.00 WIB</span>
+                    </div>
+                    <!-- Wednesday Special Close Status -->
+                    <div class="flex justify-between items-center py-1.5 px-2 bg-red-50 border border-red-100 rounded-lg text-red-700">
+                        <span class="font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-circle-xmark"></i> Rabu
+                        </span>
+                        <span class="font-bold uppercase tracking-wider text-[11px] bg-red-600 text-white px-2 py-0.5 rounded">CLOSE / LIBUR</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                        <span class="font-medium text-slate-600">Kamis</span>
+                        <span class="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">14.00 - 21.00 WIB</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                        <span class="font-medium text-slate-600">Jumat</span>
+                        <span class="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">18.00 - 21.30 WIB</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1 border-b border-slate-100">
+                        <span class="font-medium text-slate-600">Sabtu</span>
+                        <span class="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">08.00 - 22.00 WIB</span>
+                    </div>
+                    <div class="flex justify-between items-center py-1">
+                        <span class="font-medium text-slate-600">Minggu</span>
+                        <span class="font-semibold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">08.00 - 22.00 WIB</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ongkir Tariff Matrix -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                <div class="flex items-center space-x-2 mb-4 text-emerald-600">
+                    <i class="fa-solid fa-motorcycle text-lg"></i>
+                    <h3 class="font-bold text-slate-900 text-base">Tarif Jastip & Ongkir</h3>
+                </div>
+
+                <div class="overflow-hidden rounded-xl border border-slate-100 mb-4">
+                    <table class="w-full text-xs text-left">
+                        <thead class="bg-slate-50 font-bold text-slate-600 border-b border-slate-100">
+                            <tr>
+                                <th class="p-2.5">Jarak (Km)</th>
+                                <th class="p-2.5 text-right">Ongkir</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100 text-slate-700">
+                            <tr>
+                                <td class="p-2.5 font-medium">0 - 2 Km</td>
+                                <td class="p-2.5 text-right font-bold text-emerald-600">Rp 3.000</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">> 2 - 4 Km</td>
+                                <td class="p-2.5 text-right font-bold text-emerald-600">Rp 5.000</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">> 4 - 6 Km</td>
+                                <td class="p-2.5 text-right font-bold text-emerald-600">Rp 7.000</td>
+                            </tr>
+                            <tr>
+                                <td class="p-2.5 font-medium">> 6 - 8 Km</td>
+                                <td class="p-2.5 text-right font-bold text-emerald-600">Rp 9.000</td>
+                            </tr>
+                            <tr class="bg-amber-50/50">
+                                <td class="p-2.5 font-medium text-amber-900">> 8 Km</td>
+                                <td class="p-2.5 text-right font-semibold text-amber-800">Dilihat jml/hrg barang</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="p-3 bg-slate-50 rounded-xl space-y-2 text-[11px] text-slate-600">
+                    <p class="flex items-start gap-1.5">
+                        <i class="fa-solid fa-calculator text-emerald-600 mt-0.5"></i>
+                        <span><strong>Resto Tanpa Pajak:</strong> Total = Struk + Ongkir + Jastip</span>
+                    </p>
+                    <p class="flex items-start gap-1.5">
+                        <i class="fa-solid fa-square-parking text-amber-600 mt-0.5"></i>
+                        <span><strong>Parkir Resto:</strong> Tambahan Rp 2.000 atau lebih jika ada.</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Jastip Terms & Conditions -->
+            <div class="bg-white rounded-2xl p-5 border border-slate-200/80 shadow-sm">
+                <div class="flex items-center space-x-2 mb-4 text-emerald-600">
+                    <i class="fa-solid fa-shield-halved text-lg"></i>
+                    <h3 class="font-bold text-slate-900 text-base">Ketentuan Jastip</h3>
+                </div>
+
+                <ol class="space-y-2 text-xs text-slate-600 list-decimal list-inside leading-relaxed">
+                    <li>Minimal pembelian <strong>Rp 10.000</strong> per pesanan.</li>
+                    <li>Ongkir dihitung berdasarkan jarak resto ke lokasi pengantaran.</li>
+                    <li>Pembayaran berdasarkan estimasi total sebelum pesanan diproses (<strong>QRIS / Cash Pas</strong>).</li>
+                    <li>Apabila ada selisih harga (pajak/layanan/menu), disesuaikan dengan <strong>Struk Pembelian</strong>.</li>
+                    <li>Kelebihan bayar akan dikembalikan / jadi saldo atas persetujuan pelanggan.</li>
+                    <li>Kekurangan bayar dimohon melunasi sebelum / saat pesanan diantar.</li>
+                    <li>Foto Struk Pembelian dikirim sebagai bukti transaksi jika diminta.</li>
+                    <li class="font-semibold text-red-600">Pesanan yang sudah dibelikan TIDAK DAPAT DIBATALKAN.</li>
+                </ol>
+            </div>
+
+        </div>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-400 text-xs py-8 border-t border-slate-800 mt-12">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <div class="font-extrabold text-white text-base tracking-wide">GOTITIP.PWT</div>
+                <p class="text-slate-400 mt-0.5">Melayani Wilayah Universitas Jenderal Soedirman & Sumampir</p>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center gap-3">
+                <a href="https://wa.me/6285703101431" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-emerald-600 hover:text-white transition-all text-slate-300">
+                    <i class="fa-brands fa-whatsapp text-emerald-400 hover:text-white"></i>
+                    <span>+62 857-0310-1431</span>
+                </a>
+                <a href="https://instagram.com/gotitip.pwt" target="_blank" class="flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-pink-600 hover:text-white transition-all text-slate-300">
+                    <i class="fa-brands fa-instagram text-pink-400 hover:text-white"></i>
+                    <span>@gotitip.pwt</span>
+                </a>
+            </div>
+        </div>
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 text-center text-[11px] text-slate-500 mt-6 pt-4 border-t border-slate-800/60">
+            &copy; 2026 GOTITIP - Bisnis Titip Mahasiswa UNSOED. All Rights Reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript Logic -->
+    <script>
+        // Number Formatter to IDR
+        function formatIDR(amount) {
+            return 'Rp ' + amount.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        // Live Operational Check
+        function checkOperationalStatus() {
+            const now = new Date();
+            const day = now.getDay(); // 0: Sunday, 1: Monday, ... 3: Wednesday
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const currentTime = hours * 60 + minutes;
+
+            const statusBox = document.getElementById('liveStatusBox');
+            
+            // Wednesday is strictly CLOSED
+            if (day === 3) {
+                statusBox.className = 'mb-4 p-2.5 rounded-xl text-xs font-semibold flex items-center justify-between bg-red-100 text-red-800 border border-red-200';
+                statusBox.innerHTML = `
+                    <span class="flex items-center gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-red-600"></span>
+                        Hari ini (Rabu) GOTITIP Libur / CLOSE
+                    </span>
+                    <span class="text-[10px] bg-red-200 px-2 py-0.5 rounded font-bold">TUTUP</span>
+                `;
+                return;
+            }
+
+            // Operating Hours Table in Minutes
+            const schedules = {
+                1: { start: 10 * 60, end: 21 * 60, name: 'Senin' },
+                2: { start: 18 * 60, end: 22 * 60, name: 'Selasa' },
+                4: { start: 14 * 60, end: 21 * 60, name: 'Kamis' },
+                5: { start: 18 * 60, end: 21 * 60 + 30, name: 'Jumat' },
+                6: { start: 8 * 60, end: 22 * 60, name: 'Sabtu' },
+                0: { start: 8 * 60, end: 22 * 60, name: 'Minggu' }
+            };
+
+            const todaySchedule = schedules[day];
+            if (todaySchedule && currentTime >= todaySchedule.start && currentTime < todaySchedule.end) {
+                statusBox.className = 'mb-4 p-2.5 rounded-xl text-xs font-semibold flex items-center justify-between bg-emerald-100 text-emerald-800 border border-emerald-200';
+                statusBox.innerHTML = `
+                    <span class="flex items-center gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                        Saat ini GOTITIP Sedang OPEN
+                    </span>
+                    <span class="text-[10px] bg-emerald-200 text-emerald-900 px-2 py-0.5 rounded font-bold">BUKA</span>
+                `;
+            } else {
+                statusBox.className = 'mb-4 p-2.5 rounded-xl text-xs font-semibold flex items-center justify-between bg-amber-100 text-amber-800 border border-amber-200';
+                statusBox.innerHTML = `
+                    <span class="flex items-center gap-1.5">
+                        <span class="h-2.5 w-2.5 rounded-full bg-amber-500"></span>
+                        Di Luar Jam Operasional Hari Ini
+                    </span>
+                    <span class="text-[10px] bg-amber-200 text-amber-900 px-2 py-0.5 rounded font-bold">TUTUP</span>
+                `;
+            }
+        }
+
+        // Calculation Logic
+        function calculateTotal() {
+            const itemEstInput = parseFloat(document.getElementById('itemEstPrice').value) || 0;
+            const distanceTier = document.getElementById('distanceTier').value;
+            const parkingFee = parseFloat(document.getElementById('parkingFee').value) || 0;
+            const customNotice = document.getElementById('customDistanceNotice');
+
+            let ongkir = 0;
+            if (distanceTier === 'custom') {
+                customNotice.classList.remove('hidden');
+                ongkir = 0; // Calculated via admin
+            } else {
+                customNotice.classList.add('hidden');
+                ongkir = parseFloat(distanceTier);
+            }
+
+            const total = itemEstInput + ongkir + parkingFee;
+
+            // Render updates
+            document.getElementById('summaryItemPrice').innerText = formatIDR(itemEstInput);
+            document.getElementById('summaryOngkir').innerText = distanceTier === 'custom' ? 'Khusus (>8 Km)' : formatIDR(ongkir);
+            document.getElementById('summaryParkir').innerText = formatIDR(parkingFee);
+            document.getElementById('summaryTotal').innerText = formatIDR(total) + (distanceTier === 'custom' ? ' +' : '');
+        }
+
+        // WhatsApp Redirect Handler
+        function sendToWhatsApp() {
+            const name = document.getElementById('customerName').value.trim();
+            const phone = document.getElementById('customerPhone').value.trim();
+            const serviceType = document.getElementById('serviceType').value;
+            const address = document.getElementById('deliveryAddress').value.trim();
+            const merchant = document.getElementById('merchantName').value.trim();
+            const items = document.getElementById('orderItems').value.trim();
+            const itemPrice = parseFloat(document.getElementById('itemEstPrice').value) || 0;
+            const distanceSelect = document.getElementById('distanceTier');
+            const distanceText = distanceSelect.options[distanceSelect.selectedIndex].text;
+            const distanceValue = distanceSelect.value;
+            const parkingFee = parseFloat(document.getElementById('parkingFee').value) || 0;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            if (!name || !phone || !address || !merchant || !items || itemPrice < 10000) {
+                alert('Mohon lengkapi semua data formulir. Ketentuan minimal pesanan barang adalah Rp 10.000.');
+                return;
+            }
+
+            let ongkirText = "";
+            let totalEstimasiText = "";
+
+            if (distanceValue === 'custom') {
+                ongkirText = "Lebih dari 8 Km (Menunggu Konfirmasi Admin)";
+                totalEstimasiText = `${formatIDR(itemPrice + parkingFee)} + Ongkir Jarak Khusus`;
+            } else {
+                const ongkirNum = parseFloat(distanceValue);
+                ongkirText = formatIDR(ongkirNum);
+                totalEstimasiText = formatIDR(itemPrice + ongkirNum + parkingFee);
+            }
+
+            // Constructing WhatsApp Text Message
+            const message = 
+` halo GOTITIP! Saya mau order jasa titip.
+
+* DETAIL PEMESAN*
+• *Nama:* ${name}
+• *No. HP/WA:* ${phone}
+• *Kategori Jastip:* ${serviceType}
+• *Alamat Pengantaran:* ${address}
+
+* DETAIL PESANAN*
+• *Resto / Toko:* ${merchant}
+• *Item Pesanan:*
+${items}
+
+* EKLARASI & ESTIMASI BIAYA*
+• *Estimasi Harga Barang:* ${formatIDR(itemPrice)}
+• *Jarak Pengantaran:* ${distanceText}
+• *Biaya Parkir Resto:* ${formatIDR(parkingFee)}
+• *Metode Pembayaran:* ${paymentMethod}
+----------------------------------------
+* TOTAL ESTIMASI:* *${totalEstimasiText}*
+
+_Mohon konfirmasi pesanan saya. Terima kasih GOTITIP!_`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const targetPhoneNumber = "6285703101431";
+            const whatsappURL = `https://wa.me/${targetPhoneNumber}?text=${encodedMessage}`;
+
+            // Open WhatsApp
+            window.open(whatsappURL, '_blank');
+        }
+
+        // Initialize status on load
+        window.onload = function() {
+            checkOperationalStatus();
+            calculateTotal();
+        };
+    </script>
+</body>
+</html>
